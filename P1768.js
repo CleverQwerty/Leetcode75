@@ -1,7 +1,39 @@
 # 1768: Merge Strings Alternately
 
-# Time complexity = O(n^2)
+####################################################### BEST SOLUTION ############################################################
+# Time complexity = O(n)
 # Space complexity = O(n)
+# This solution is better because the merged string is first formed as an array giving it O(1) access time, thus reducing time and space complexity.
+
+/**
+ * @param {string} word1
+ * @param {string} word2
+ * @return {string}
+ */
+var mergeAlternately = function(word1, word2) {
+    let merged = [];
+    let len1 = word1.length;
+    let len2 = word2.length;
+    let i=0;
+
+    while((i<len1) && (i<len2)){
+        merged.push(word1[i]);
+        merged.push(word2[i]);
+        i++;
+    }
+    if (i<len1){
+        merged.push(word1.slice(i));
+    }
+    else if (i<len2){
+        merged.push(word2.slice(i));
+    }
+    return merged.join('');
+};
+
+####################################################### OTHER SOLUTION 1 ############################################################
+# Time complexity = O(max(n,m))
+# Space complexity = O(n+m)
+# This solution uses substring which is time complexity heavy.
 
 /**
  * @param {string} word1
